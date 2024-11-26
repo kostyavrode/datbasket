@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private GameObject losePanel;
     [SerializeField] private GameObject inGamePanel;
+    [SerializeField] private GameObject winGamePanel;
     [SerializeField] private TMP_Text timeText;
     [SerializeField] private TMP_Text levelText;
     private void Awake()
@@ -31,12 +32,18 @@ public class UIManager : MonoBehaviour
     public void StartGame()
     {
         GameManager.instance.StartGame();
+        //GameManager.instance.SetTargetGoals
         levelText.text = PlayerPrefs.GetInt("level").ToString();
     }
     public void ShowLosePanel()
     {
         inGamePanel.SetActive(false);
         losePanel.SetActive(true);
+    }
+    public void ShowWinPanel()
+    {
+        inGamePanel?.SetActive(false);
+        winGamePanel?.SetActive(true);
     }
     public void ShowTime(int tt)
     {
@@ -85,7 +92,7 @@ public class UIManager : MonoBehaviour
     }
     public void ShowScore(string score)
     {
-        scoreBar.text = score;
+        scoreBar.text = score+"/"+GameManager.instance.targetGoal;
     }
     public void ShowBestScore(string bestScore)
     {

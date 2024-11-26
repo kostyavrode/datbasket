@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private int score;
     private int money;
     private float time = 60;
+    public int targetGoal;
     [SerializeField] private GameObject[] objectsToSpawn;
     [SerializeField] private AudioSource audioSourceGoal;
     private void Awake()
@@ -48,15 +49,23 @@ public class GameManager : MonoBehaviour
     }
     public void AddScore()
     {
-        score+=1;
+        score += 1;
         audioSourceGoal.Play();
         UIManager.instance.ShowScore(score.ToString());
         StartCoroutine(WaitForGenerateNewHoopPos());
+        if (score >= targetGoal)
+        {
+            EndGame(true);
+        }
     }
     public void UpdateMoney()
     {
         money = PlayerPrefs.GetInt("Money");
         UIManager.instance.ShowMoney(money.ToString());
+    }
+    public void SetTargetGoals(int t)
+    {
+        targetGoal = t;
     }
     public void StartGame()
     {
@@ -78,7 +87,7 @@ public class GameManager : MonoBehaviour
         isGameStarted = true;
         Time.timeScale = currentTimeScale;
     }
-    public void EndGame()
+    public void EndGame(bool isWin=false)
     {
         isGameStarted = false;
         int temo = PlayerPrefs.GetInt("Money") + score;
@@ -87,8 +96,18 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
         
         CheckBestScore();
-        UIManager.instance.ShowLosePanel();
+        
         PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") + 1);
+        if (isWin)
+        {
+            Debug.Log("Level Completed");
+            UIManager.instance.ShowWinPanel();
+            PlayerPrefs.SetInt("Levels", PlayerPrefs.GetInt("Levels") + 1);
+        }
+        else
+        {
+            UIManager.instance.ShowLosePanel();
+        }
     }
     private void CheckBestScore()
     {
