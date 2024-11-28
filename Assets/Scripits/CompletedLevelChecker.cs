@@ -21,9 +21,10 @@ public class CompletedLevelChecker : MonoBehaviour
     private void CheckCompleted()
     {
         int z = PlayerPrefs.GetInt("Levels");
+        Debug.Log(z);
         for (int i = 0; i < z; i++)
         {
-            if (z<levels.Length)
+            if (i<levels.Length)
             {
                 levels[i].interactable = true;
             }

@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         }
         if (time<=0 && isGameStarted)
         {
-            EndGame();
+            EndGame(false);
         }
     }
     public void AddScore()
@@ -92,9 +92,7 @@ public class GameManager : MonoBehaviour
         isGameStarted = false;
         int temo = PlayerPrefs.GetInt("Money") + score;
         PlayerPrefs.SetInt("Money", temo);
-        Debug.Log(temo);
         PlayerPrefs.Save();
-        
         CheckBestScore();
         
         PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") + 1);
