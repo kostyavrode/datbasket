@@ -50,6 +50,7 @@ public class Ball : MonoBehaviour
         if (GameManager.instance.IsGameStarted() && transform.position.y>8.5f)
         {
             transform.position = new Vector3(transform.position.x, 8.5f, transform.position.z);
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         }
     }
     private IEnumerator WaitForInteract()
