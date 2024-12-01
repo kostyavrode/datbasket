@@ -20,17 +20,28 @@ public class Translator : MonoBehaviour
 
     private void Awake()
     {
+        if (PlayerPrefs.GetInt("ISFIRST")==1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("ISFIRST", 1);
+        }
         instance = this;
     }
 
     private void OnLevelWasLoaded(int level)
     {
-        if (PlayerPrefs.GetInt("isPortu")==1)
+        if (PlayerPrefs.GetInt("isPortu")==1 && Translator.instance.GetHashCode()==this.GetHashCode())
         {
             Translate();
         }
     }
-
+    public void NotTranslate()
+    {
+        PlayerPrefs.SetInt("isPortu", 0);
+    }
     public void Translate()
     {
         for (int i = 0; i < portugales.Length; i++)

@@ -8,6 +8,7 @@ public class Shop : MonoBehaviour
     public int cost2;
     public GameObject buyButton1;
     public GameObject buyButton2;
+    public GameObject notEnoughMoney;
     private void OnEnable()
     {
         CheckBuy();
@@ -33,6 +34,13 @@ public class Shop : MonoBehaviour
             CheckBuy();
             GameManager.instance.UpdateMoney();
         }
+        else
+        {
+
+            {
+                notEnoughMoney.SetActive(true);
+            }
+        }
     }
     public void Buy2()
     {
@@ -43,6 +51,10 @@ public class Shop : MonoBehaviour
             PlayerPrefs.Save();
             CheckBuy();
             GameManager.instance.UpdateMoney();
+        }
+        else
+        {
+            notEnoughMoney.SetActive(true);
         }
     }
 }

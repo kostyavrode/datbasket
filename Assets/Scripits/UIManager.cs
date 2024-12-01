@@ -18,6 +18,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject winGamePanel;
     [SerializeField] private TMP_Text timeText;
     [SerializeField] private TMP_Text levelText;
+
+    [SerializeField] private TMP_Text winScoreText;
+    [SerializeField] private TMP_Text loseScoreText;
     private void Awake()
     {
         instance = this;
@@ -39,11 +42,13 @@ public class UIManager : MonoBehaviour
     {
         inGamePanel.SetActive(false);
         losePanel.SetActive(true);
+        loseScoreText.text=scoreBar.text;
     }
     public void ShowWinPanel()
     {
         inGamePanel?.SetActive(false);
         winGamePanel?.SetActive(true);
+        winScoreText.text=scoreBar.text;
     }
     public void ShowTime(int tt)
     {
@@ -97,5 +102,9 @@ public class UIManager : MonoBehaviour
     public void ShowBestScore(string bestScore)
     {
         bestScoreBar.text = bestScore;
+    }
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("ISFIRST", 0);
     }
 }
