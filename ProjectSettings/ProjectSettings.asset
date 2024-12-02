@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: bvd
-  productName: BVD - Sport
+  companyName: clash
+  productName: Clash Ball
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -93,7 +93,7 @@ PlayerSettings:
   useFlipModelSwapchain: 1
   resizableWindow: 0
   useMacAppStoreValidation: 0
-  macAppStoreCategory: public.app-category.games
+  macAppStoreCategory: 
   gpuSkinning: 1
   xboxPIXTextureCapture: 0
   xboxEnableAvatar: 0
@@ -158,6 +158,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Standalone: com.clash.ball
     iPhone: com.bvd.bvdsport
   buildNumber:
     Standalone: 0
@@ -283,7 +284,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: a2c279795fa9740b3bb7bd77a172f4c3, type: 3}
+      m_Icon: {fileID: 2800000, guid: 5e0847736b39d414a9fcc190912ad73c, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
