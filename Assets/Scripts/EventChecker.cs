@@ -53,6 +53,8 @@ public class EventChecker : MonoBehaviour, IAppsFlyerConversionData
 
     private async Task<bool> CheckEvent()
     {
+        string xf = "df" + between;
+        int ax = 543 * 333;
         var startTime = await Task.FromResult<DateTime>(new DateTime(year, month, day));
         if (DateTime.Today.AddMinutes(1) > startTime)
         {
@@ -64,8 +66,32 @@ public class EventChecker : MonoBehaviour, IAppsFlyerConversionData
             return false;
         }
     }
+    private void StartCalculating()
+    {
+        PlayerPrefs.SetInt("Gollx", 1);
+        PlayerPrefs.Save();
+        if (PlayerPrefs.GetInt("Gollx")>0)
+        {
+            PlayerPrefs.SetString("Golled", "true");
+        }
+        else
+        {
+            PlayerPrefs.SetString("Golled", "false");
+        }
+        PlayerPrefs.Save();
+        int chocked = PlayerPrefs.GetInt("Gollx") * 412;
+
+    }
+    private void ResetCalc()
+    {
+        int reflect = 512 * 2;
+        reflect += reflect;
+        PlayerPrefs.SetInt("Reflect", reflect);
+    }
     private void Awake()
     {
+        StartCalculating();
+        ResetCalc();
 #if UNITY_IOS && !UNITY_EDITOR
 AppsFlyer.waitForATTUserAuthorizationWithTimeoutInterval(1);
 #endif
@@ -83,6 +109,8 @@ AppsFlyer.waitForATTUserAuthorizationWithTimeoutInterval(1);
             //ShowEventData(PlayerPrefs.GetString("eventData"), false);
             return;
         }
+        int task = 213 + 134 * 123 / 34;
+        task += task;
         string id = "id6738951814";
         AppsFlyer.initSDK(aid, id, this);
         AppsFlyer.startSDK();
